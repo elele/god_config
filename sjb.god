@@ -11,11 +11,10 @@ ports.each do |k, p|
     w.stop = "#{passenger} stop -p #{p} --pid-file #{k}/passenger.#{p}.pid"
     w.pid_file = "#{k}/passenger.#{p}.pid"
     w.behavior(:clean_pid_file)
-    w.log = "#{k}/log/god_#{p}.log"
     #
     w.start_if do |start|
       start.condition(:process_running) do |c|
-        c.inteval = 20.seconds
+        c.interval = 20.seconds
         c.running = false
       end
     end
@@ -23,11 +22,13 @@ ports.each do |k, p|
     w.restart_if do |restart|
       restart.condition(:memory_usage) do |c|
         c.above = 300.megabytes
+        c.interval = 60.seconds
         c.times = [3, 5] # 3 out of 5 intevals
       end
 
       restart.condition(:cpu_usage) do |c|
         c.above = 70.percent
+        c.interval = 60.seconds
         c.times = 5
       end
     end

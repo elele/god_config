@@ -11,7 +11,6 @@ God.watch do |w|
   w.stop = "#{passenger} stop -p #{p} --pid-file #{k}/passenger.#{p}.pid"
   w.pid_file = "#{k}/passenger.#{p}.pid"
   w.behavior(:clean_pid_file)
-  w.log = "#{k}/log/god_#{p}.log"
   #
   w.start_if do |start|
     start.condition(:process_running) do |c|
