@@ -23,11 +23,13 @@ God.watch do |w|
   w.restart_if do |restart|
     restart.condition(:memory_usage) do |c|
       c.above = 400.megabytes
+      c.interval = 20.seconds
       c.times = [3, 5] # 3 out of 5 intevals
     end
 
     restart.condition(:cpu_usage) do |c|
       c.above = 70.percent
+      c.interval = 20.seconds
       c.times = 5
     end
   end
