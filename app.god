@@ -1,7 +1,7 @@
 # encoding: utf-8
 # 上街吧app服务器 8001 端口监控
 
-k = '/data/www/apps/shangjieba/shared'
+k = '/data/www/apps/shangjieba_app/shared'
 p = '8001'
 passenger = '/usr/bin/passenger'
 
