@@ -15,7 +15,7 @@ God.watch do |w|
   #
   w.start_if do |start|
     start.condition(:process_running) do |c|
-      c.inteval = 20.seconds
+      c.interval = 20.seconds
       c.running = false
     end
   end
